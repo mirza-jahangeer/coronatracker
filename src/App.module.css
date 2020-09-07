@@ -1,0 +1,11 @@
+body{
+    background-color:rgb(255, 255,255)
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-top: 100px;
+    margin-left: 200px;
+}
