@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import{Card, Grid, Typography, CardContent} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
+import {CountUp} from 'react-countup';
 
 const useStyles = makeStyles({
     root: {
@@ -10,9 +11,9 @@ const useStyles = makeStyles({
     }
 });
 
- const Cards = ({data:{confirmed, recovered, deaths, lastUpdate}}) => {
+ export const Cards = ({data:{confirmed, recovered, deaths, lastUpdate}}) => {
     const classes = useStyles();
-    console.log(confirmed)
+   
     if(!confirmed){
         return 'Loading....';
     }
@@ -27,9 +28,9 @@ const useStyles = makeStyles({
                     <Card>
                         <CardContent>
                             <Typography color="textSecondary" gutterBottom>Infected</Typography>
-                             <Typography variant="h5">{confirmed.value}</Typography>
-                            <Typography>{ lastUpdate }</Typography>
-                            <Typography variant="body2"> Number of Confirmed cases by COVID-19</Typography>
+                             <Typography variant="h5"> {confirmed.value}</Typography>
+                            <Typography>{new Date(lastUpdate).toDateString}</Typography>
+                            <Typography variant="body2">Number of active cases of COVID-19</Typography>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -37,8 +38,10 @@ const useStyles = makeStyles({
                     <Card>
                         <CardContent>
                             <Typography color="textSecondary" gutterBottom>Deaths</Typography>
-                            <Typography variant="h5">{deaths.value}</Typography>
-                            <Typography>last update time</Typography>
+                            <Typography variant="h5">
+                                {deaths.value}
+                            </Typography>
+                            <Typography>{new Date(lastUpdate).toDateString}</Typography>
                             <Typography variant="body2">Number of deaths by COVID-19</Typography>
                         </CardContent>
                     </Card>
@@ -48,8 +51,10 @@ const useStyles = makeStyles({
                     <Card>
                         <CardContent>
                             <Typography color="textSecondary" gutterBottom>Recovered</Typography>
-                            <Typography variant="h5">{ recovered.value}</Typography>
-                            <Typography>last update time</Typography>
+                            <Typography variant="h5">
+                                {recovered.value}
+                            </Typography>
+                            <Typography>{new Date(lastUpdate).toDateString}</Typography>
                             <Typography variant="body2">Number of recovered cases by COVID-19</Typography>
                         </CardContent>
                     </Card>
@@ -59,4 +64,3 @@ const useStyles = makeStyles({
         </div>
     );
 }
-export default Cards;

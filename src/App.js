@@ -1,7 +1,7 @@
 import React,{ useState, useEffect} from 'react';
 import {Button} from '@material-ui/core'
 import {Header} from './components/Header';
-import  Cards  from './components/Card';
+import  {Cards } from './components/Cards';
 import {Chart} from './components/Chart';
 import Styles from './App.module.css';
 import {fetchData} from './api'
@@ -20,7 +20,7 @@ class App extends  Component {
  
   render(){
   const { data } = this.state;
-  console.log(data)
+  
 
   return (
   <div>
