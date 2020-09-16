@@ -7,7 +7,7 @@ import Styles from './App.module.css';
 import {fetchData} from './api'
 import { Component } from 'react';
 import {CountryPicker} from './components/CountryPicker';
-
+import {Footer} from './components/Footer';
 
 class App extends  Component {
 
@@ -19,9 +19,11 @@ class App extends  Component {
   const fetchedData = await fetchData();
   this.setState({data: fetchedData})
  }
- handleCountryChange(country){
+ handleCountryChange = async (country) => {
    //fetch the data
    //handle the change
+   const fetchedData = await fetchData(country);
+   this.setState({data: fetchedData, country:country})
    console.log(country);
  }
  
@@ -36,7 +38,9 @@ class App extends  Component {
       <Cards data={data}/>
       <CountryPicker handleCountryChange={this.handleCountryChange}/>
       <Chart />
+      
     </div>
+   
     </div>
   );
 }

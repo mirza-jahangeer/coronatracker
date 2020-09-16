@@ -14,7 +14,7 @@ export const Chart = () => {
     });
 
     const lineChart = (
-        dailyData.length != 0 ? (
+        dailyData.length !== 0 ? (
             <Line
         
             data={{
